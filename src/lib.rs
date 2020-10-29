@@ -180,7 +180,8 @@ impl<T: Float> Complex<T> {
     /// Convert a polar representation into a complex number.
     #[inline]
     pub fn from_polar(r: T, theta: T) -> Self {
-        Self::new(r * theta.cos(), r * theta.sin())
+        let (sin,cos) = theta.sin_cos();
+        Self::new(r * cos, r * sin)
     }
 
     /// Computes `e^(self)`, where `e` is the base of the natural logarithm.
